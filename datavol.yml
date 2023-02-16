@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins
+  namespace: myspace
+  labels:
+    app: jenkins
+spec:
+  containers:
+    - name: jenkins
+      image: jenkins/jenkins:lts
+      volumeMounts:
+        - mountPath: "/var/jenkins_home"
+          name: "jenkin-data"
+  volumes:
+    - name: "jenkin-data"
+      hostPath:
+        path: "/opt/efs"

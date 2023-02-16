@@ -1,0 +1,15 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: test2
+  namespace: myspace
+  labels:
+    type: amazonEBS
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  awsElasticBlockStore:
+    volumeID: vol-047aa6bdc81e39baf
+    fsType: ext4

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker-pvt-pod
+  labels:
+    app: pvt-tomcat
+spec:
+  containers:
+  - name: docker-pvt-tomcat
+    image: krishna123456/tomcat:1.11.111
+  imagePullSecrets:
+  - name: docker-secret

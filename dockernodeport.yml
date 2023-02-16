@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-docker-nodeport
+spec:
+  selector:
+    app: docker-tomcat
+  type: NodePort
+  ports:
+    - name: tomcat-port
+      protocol: TCP
+      targetPort: 8080
+      port: 8080
+      nodePort: 31999 

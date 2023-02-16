@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pvt-tomcat-docker-nodeport
+spec:
+  selector:
+    app: pvt-tomcat
+  type: NodePort
+  ports:
+    - name: tomcat-port
+      protocol: TCP
+      targetPort: 8080
+      port: 8080
+      nodePort: 32000 

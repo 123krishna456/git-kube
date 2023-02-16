@@ -1,0 +1,9 @@
+selector_matchlabels: tomcat
+deployment_name: tomcat
+replicas: 3
+registry_name: krishna123456
+docker_repo_name: tomcat
+image_tag: 1.11.111
+port_name: tomcat
+target_port: 8080
+port: 8080

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tomcat-docker
+  labels:
+    app: docker-tomcat
+spec:
+  containers:
+  - name: tomcat
+    image: krishna123456/tomcat:1.11.111

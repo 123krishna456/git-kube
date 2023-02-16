@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tomcat
+  labels:
+    app: tc
+spec:
+  containers:
+  - name: tomcat
+    image: krishna123456/tomcat:1.11.111
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tc-clusterip
+spec:
+  selector:
+    app: tc
+  ports:
+    - name: tomcat
+      protocol: TCP
+      targetPort: 8080
+      port: 8080

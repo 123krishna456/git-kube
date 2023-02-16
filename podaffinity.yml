@@ -4,7 +4,7 @@ metadata:
   name: tomcat-nginx-deployment
   namespace: myspace
 spec:
-  replicas: 5
+  replicas: 3
   selector:
     matchLabels:
       app: tomcat-nginx-pd
@@ -20,16 +20,15 @@ spec:
         app: tomcat-nginx-pd
     spec:
       affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 1
-              preference: 
-                matchExpressions:
-                  - key: sport
-                    operator: In
-                    values:
-                      - cricket
-                      - football
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - tomcat-nginx-pd
+            topologyKey: "kubernetes.io/hostname"
       containers:
         - name: apache-tomcat
           image: krishna123456/tomcat:1.11.111

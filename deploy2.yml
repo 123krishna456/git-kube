@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tc2-deployment
+  namespace: mynamespace
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: another-label
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      name: another-tomcat
+      labels:
+        app: another-label
+    spec:
+      containers:
+        - name: tc2
+          image: krishna123456/tomcat:1.11.111
+          resources:
+            limits:
+              cpu: "0.75"
+              memory: 256Mi
+            requests:
+              cpu: 400m
+              memory: 128Mi

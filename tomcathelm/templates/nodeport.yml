@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-nginx-nodeportservice
+  namespace: {{ .Values.selector_label }}
+spec:
+  selector:
+    app: tomcat-nginx-pd
+  type: NodePort
+  ports:
+    - name: tomcat-port
+      protocol: TCP
+      targetPort: 8080
+      port: 8080
+      nodePort: 31999 
